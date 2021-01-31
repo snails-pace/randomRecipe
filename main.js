@@ -4,3 +4,7 @@ const baseIngredient = {
     couscous: []
 };
 
+const additionalDish = {
+    sideDish: [],
+    dessert: []
+};
