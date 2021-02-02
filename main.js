@@ -8,19 +8,26 @@ const additionalDish = {
     dessert: ['Mochi', 'Pudding', 'Red Berry Compot', 'Crepe', 'Icecream', 'Cookie', 'Mitarashi Dango', 'Waffles', 'Nama Chocolate']
 }
 
+let input;
 
-let input = 'rice';
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('Would you like rice or pasta as base of the dish? ', (answer) => {
+    input = answer;
+    console.log(dishRec(input));
+  rl.close();
+});
 
 function dishRec(input) {
     const baseIndex = Math.floor((Math.random() * (baseIngredient[input].length -1)));
-    console.log(`base Index ${baseIndex}`);
     const sideIndex = Math.floor((Math.random() * (additionalDish.sideDish.length - 1)));
-    console.log(`side Index ${sideIndex}`);
     const dessertIndex = Math.floor((Math.random() * (additionalDish.dessert.length - 1)));
-    console.log(`dessert Index ${dessertIndex}`);
-    return ```You could cook ${baseIngredient[input][baseIndex]} with ${additionalDish.sideDish[sideIndex]} as
-    side dish and ${additionalDish.dessert[dessertIndex]} as dessert.```
+    return `You could cook ${baseIngredient[input][baseIndex]} with ${additionalDish.sideDish[sideIndex]} as side dish and ${additionalDish.dessert[dessertIndex]} as dessert.`
 }
 
-console.log(baseIngredient.rice[0]);
-//console.log(dishRec(input));
+
